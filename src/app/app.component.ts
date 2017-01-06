@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AngularFire} from 'angularfire2';
 
 @Component({
@@ -6,10 +6,14 @@ import {AngularFire} from 'angularfire2';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'fc works!';
+  cuisines: any;
 
-  constructor(fc: AngularFire) {
-    console.log(fc);
+  constructor(private af: AngularFire) {
+  }
+
+  ngOnInit() {
+    this.cuisines = this.af.database.list('cuisines');
   }
 }
