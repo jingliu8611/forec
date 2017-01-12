@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
-import {Http} from '@angular/http';
+import {AuthService} from './shared/services/auth.service';
 
 @Component({
   selector: 'fc-root',
@@ -13,10 +13,10 @@ export class AppComponent implements OnInit {
   photoURL: string;
   cuisines: any;
 
-  constructor(private af: AngularFire,
-    private http: Http
-  ) {
-  }
+  constructor(
+    private af: AngularFire,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.cuisines = this.af.database.list('cuisines');
@@ -38,44 +38,6 @@ export class AppComponent implements OnInit {
         );
         this.displayName = authState.auth.displayName;
         this.photoURL = authState.auth.photoURL;
-      }
-    );
-  }
-
-  login() {
-    this.af.auth.login({
-      email: 'test@gmail.com',
-      password: 'admin@123'
-    },{
-      provider: AuthProviders.Password,
-      method: AuthMethods.Password
-    }).then(
-      authState => {
-        console.log('after login: ', authState);
-      }
-    ).catch(
-      error => {
-        console.log('login error');
-      }
-    );
-  }
-
-  logout() {
-    this.af.auth.logout();
-  }
-
-  register() {
-    this.af.auth.createUser({
-      email: 'test@gmail.com',
-      password: 'admin@123'
-    }).then(
-      authState => {
-        console.log('register: ', authState);
-        authState.auth.sendEmailVerification();
-      }
-    ).catch(
-      error => {
-        console.log('error: ', error);
       }
     );
   }

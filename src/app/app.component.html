@@ -6,6 +6,5 @@
 </ul>
 <h1>Hello {{ displayName}}</h1>
 <img *ngIf="photoURL" src="{{ photoURL }}" alt="">
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
-<button (click)="register()">Register</button>
+<button *ngIf="!authService.isAuthenticated()" (click)="authService.login()">Login</button>
+<button *ngIf="authService.isAuthenticated()" (click)="authService.logout()">Logout</button>
