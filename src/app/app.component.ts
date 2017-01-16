@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 import {AuthService} from './shared/services/auth.service';
 
 @Component({
@@ -14,30 +13,29 @@ export class AppComponent implements OnInit {
   cuisines: any;
 
   constructor(
-    private af: AngularFire,
     private authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.cuisines = this.af.database.list('cuisines');
+    this.cuisines = this.authService.getTestCuisines();
 
-    this.af.auth.subscribe(
+    this.authService.getAuth().subscribe(
       authState => {
         if (!authState) {
-          console.log('not logged in');
+          console.log('not logged in', authState);
           this.displayName = null;
           this.photoURL = null;
           return;
         }
         console.log('logged in', authState);
-        let userRef = this.af.database.object('/users/' + authState.uid);
-        userRef.subscribe(
-          user => {
-            console.log('user: ', user);
-          }
-        );
-        this.displayName = authState.auth.displayName;
-        this.photoURL = authState.auth.photoURL;
+        // let userRef = this.af.database.object('/users/' + authState.uid);
+        // userRef.subscribe(
+        //   user => {
+        //     console.log('user: ', user);
+        //   }
+        // );
+        this.displayName = authState.auth['displayName'];
+        this.photoURL = authState.auth['photoURL'];
       }
     );
   }

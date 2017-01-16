@@ -1,34 +1,79 @@
 import {Injectable} from '@angular/core';
-import {tokenNotExpired} from 'angular2-jwt';
-
-
-declare var Auth0Lock: any;
+import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 
 @Injectable()
 export class AuthService {
-  options = {
-    language: 'zh'
-  };
-  lock = new Auth0Lock('5JlS6126NpWeqkivfqoDvfwf32Dx46YH', 'jingliu.auth0.com');
 
-  constructor() {
-    this.lock.on('authenticated',
-      authResult => {
-        console.log('auth result: ', authResult);
-        localStorage.setItem('id_token', authResult.idToken);
+  constructor(
+    private af: AngularFire
+  ) {
+
+  }
+
+  public login() {
+    //noinspection TypeScriptUnresolvedFunction
+    this.af.auth.login({
+      email: 'test@gmail.com',
+      password: 'admin@123'
+    },{
+      provider: AuthProviders.Password,
+      method: AuthMethods.Password
+    }).then(
+      authState => {
+        console.log('auth service logged in: ', authState);
+      }
+    ).catch(
+      err => {
+        console.log('login error: ', err);
       }
     );
   }
 
-  public login() {
-    this.lock.show(this.options);
-  }
-
   public isAuthenticated() {
-    return tokenNotExpired();
   }
 
   public logout() {
-    localStorage.removeItem('id_token');
+    this.af.auth.logout();
+  }
+
+  public register() {
+    //noinspection TypeScriptUnresolvedFunction
+    this.af.auth.createUser({
+      email: 'test1@gmail.com',
+      password: 'admin@123'
+    }).then(
+      authState => {
+        console.log('auth service register: ', authState);
+        authState.auth.sendEmailVerification();
+      }
+    ).catch(
+      err => {
+        console.log('register error: ', err);
+      }
+    );
+  }
+
+  public thirdPartyLogin() {
+    //noinspection TypeScriptUnresolvedFunction
+    this.af.auth.login({
+      provider: AuthProviders.Facebook,
+      method: AuthMethods.Popup
+    }).then(
+      authState => {
+        console.log('auth service logged in: ', authState);
+      }
+    ).catch(
+      err => {
+        console.log('login error: ', err);
+      }
+    );
+  }
+
+  getAuth() {
+    return this.af.auth;
+  }
+
+  public getTestCuisines() {
+    return this.af.database.list('cuisines');
   }
 }
