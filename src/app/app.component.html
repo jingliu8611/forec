@@ -1,3 +1,4 @@
+<fc-header></fc-header>
 <h1>
   {{title}}
 </h1>
@@ -10,3 +11,19 @@
 <button (click)="authService.login()">Login</button>
 <button (click)="authService.logout()">Logout</button>
 <button (click)="authService.register()">Register</button>
+<a class="waves-effect waves-light btn">button</a>
+<div class="input-field col s12">
+  <select multiple>
+    <option value="" disabled selected>Choose your option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <label>Materialize Multiple Select</label>
+</div>
+<ul id="slide-out" class="side-nav">
+  <li><a href="#!">First Sidebar Link</a></li>
+  <li><a href="#!">Second Sidebar Link</a></li>
+</ul>
+<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+
