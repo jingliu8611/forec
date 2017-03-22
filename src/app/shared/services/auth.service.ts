@@ -3,6 +3,11 @@ import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 
 @Injectable()
 export class AuthService {
+  thirdParties = [
+    'Google',
+    'Facebook',
+    'Twitter'
+  ];
 
   constructor(
     private af: AngularFire
@@ -11,7 +16,6 @@ export class AuthService {
   }
 
   public login() {
-    //noinspection TypeScriptUnresolvedFunction
     this.af.auth.login({
       email: 'test@gmail.com',
       password: 'admin@123'
@@ -53,10 +57,9 @@ export class AuthService {
     );
   }
 
-  public thirdPartyLogin() {
-    //noinspection TypeScriptUnresolvedFunction
+  public thirdPartyLogin(type = this.thirdParties[1]) {
     this.af.auth.login({
-      provider: AuthProviders.Facebook,
+      provider: this.selectProvider(type),
       method: AuthMethods.Popup
     }).then(
       authState => {
@@ -75,5 +78,16 @@ export class AuthService {
 
   public getTestCuisines() {
     return this.af.database.list('cuisines');
+  }
+
+  private selectProvider(type) {
+    switch (type) {
+      case this.thirdParties[0]:
+        return AuthProviders.Google;
+      case this.thirdParties[1]:
+        return AuthProviders.Facebook;
+      default:
+        return AuthProviders.Twitter;
+    }
   }
 }

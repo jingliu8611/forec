@@ -7,7 +7,7 @@
 </ul>
 <h1>Hello {{ displayName}}</h1>
 <img *ngIf="photoURL" src="{{ photoURL }}" alt="">
-<button (click)="authService.thirdPartyLogin()">Third Party Login</button>
+<button (click)="authService.thirdPartyLogin(authService.thirdParties[0])">Third Party Login</button>
 <button (click)="authService.login()">Login</button>
 <button (click)="authService.logout()">Logout</button>
 <button (click)="authService.register()">Register</button>
