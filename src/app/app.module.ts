@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AuthService} from './shared/services/auth.service';
 import {HeaderComponent} from './header/header.component';
+import {NgRedux, NgReduxModule} from 'ng2-redux';
+
+import {IAppState, rootReducer, INITIAL_STATE} from './store';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -25,6 +28,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgReduxModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
@@ -32,4 +36,8 @@ export const firebaseConfig = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
+     ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  }
+}
