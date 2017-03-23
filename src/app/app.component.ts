@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from './shared/services/auth.service';
 import {NgRedux, select} from 'ng2-redux';
-import {IAppState} from './store';
-import {INCREMENT} from './actions';
 
 declare let $;
 
@@ -13,16 +11,12 @@ declare let $;
 })
 export class AppComponent implements OnInit {
   title = 'fc works!';
-  displayName: string;
-  photoURL: string;
   cuisines: any;
-  @select('counter') count;
-  @select(s => s.authState) authState;
+  @select(s => s.login.authState) authState;
 
 
   constructor(
     private authService: AuthService,
-    private ngRedux: NgRedux<IAppState>
   ) {
   }
 
@@ -42,9 +36,5 @@ export class AppComponent implements OnInit {
     this.cuisines = this.authService.getTestCuisines();
 
     this.authService.getAuth();
-  }
-
-  increment() {
-    this.ngRedux.dispatch({type: INCREMENT});
   }
 }

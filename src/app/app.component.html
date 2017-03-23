@@ -7,8 +7,6 @@
 </ul>
 <h1>Hello {{ (authState | async)?.auth.displayName}}</h1>
 <img *ngIf="authState" src="{{ (authState | async)?.auth.photoURL }}" alt="">
-<button (click)="authService.thirdPartyLogin(authService.thirdParties[0])">Third Party Login</button>
-<button (click)="authService.login()">Login</button>
 <button (click)="authService.logout()">Logout</button>
 <button (click)="authService.register()">Register</button>
 <a class="waves-effect waves-light btn">button</a>
@@ -26,5 +24,4 @@
   <li><a href="#!">Second Sidebar Link</a></li>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-<div>{{count | async}}</div>
-<button (click)="increment()">increment</button>
+<fc-login></fc-login>

@@ -9,7 +9,8 @@ import {AuthService} from './shared/services/auth.service';
 import {HeaderComponent} from './header/header.component';
 import {NgRedux, NgReduxModule} from 'ng2-redux';
 
-import {IAppState, rootReducer, INITIAL_STATE} from './store';
+import {rootReducer, INITIAL_STATE} from './store';
+import {LoginComponent} from './login/login.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -22,7 +23,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ export const firebaseConfig = {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngRedux: NgRedux<IAppState>) {
+  constructor(ngRedux: NgRedux<any>) {
      ngRedux.configureStore(rootReducer, INITIAL_STATE);
   }
 }

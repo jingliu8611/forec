@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from '../../store';
-import {NOT_LOGGED_IN, GET_AUTH_REQUEST, GET_AUTH_ERROR, LOGGED_IN} from '../../actions';
+import {GET_AUTH_REQUEST, NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR} from '../../login/login.actions';
 
 @Injectable()
 export class AuthService {
@@ -19,16 +19,18 @@ export class AuthService {
 
   }
 
-  public login() {
+  public login(email, password) {
     this.af.auth.login({
-      email: 'test@gmail.com',
-      password: 'admin@123'
+      // email: 'test@gmail.com',
+      // password: 'admin@123'
+      email: email,
+      password: password
     },{
       provider: AuthProviders.Password,
       method: AuthMethods.Password
     }).then(
       authState => {
-        console.log('auth service logged in: ', authState);
+        console.log('auth service - email logged in: ', authState);
       }
     ).catch(
       err => {
@@ -67,7 +69,7 @@ export class AuthService {
       method: AuthMethods.Popup
     }).then(
       authState => {
-        console.log('auth service logged in: ', authState);
+        console.log('auth service - third party logged in: ', authState);
       }
     ).catch(
       err => {
@@ -81,10 +83,10 @@ export class AuthService {
     this.af.auth.subscribe(
       authState => {
         if (!authState) {
-          console.log('auth service - not logged in', authState);
+          console.log('auth service - state - not logged in', authState);
           this.ngRedux.dispatch({type: NOT_LOGGED_IN});
         } else {
-          console.log('auth service - logged in', authState);
+          console.log('auth service - state - logged in', authState);
           this.ngRedux.dispatch({type: LOGGED_IN, authState: authState});
         }
       },
