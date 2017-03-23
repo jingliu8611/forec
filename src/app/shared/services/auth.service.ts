@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
+import {NgRedux} from 'ng2-redux';
+import {IAppState} from '../../store';
+import {NOT_LOGGED_IN, GET_AUTH_REQUEST, GET_AUTH_ERROR, LOGGED_IN} from '../../actions';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +13,8 @@ export class AuthService {
   ];
 
   constructor(
-    private af: AngularFire
+    private af: AngularFire,
+    private ngRedux: NgRedux<IAppState>
   ) {
 
   }
@@ -73,7 +77,21 @@ export class AuthService {
   }
 
   getAuth() {
-    return this.af.auth;
+    this.ngRedux.dispatch({type: GET_AUTH_REQUEST});
+    this.af.auth.subscribe(
+      authState => {
+        if (!authState) {
+          console.log('auth service - not logged in', authState);
+          this.ngRedux.dispatch({type: NOT_LOGGED_IN});
+        } else {
+          console.log('auth service - logged in', authState);
+          this.ngRedux.dispatch({type: LOGGED_IN, authState: authState});
+        }
+      },
+      err => {
+        this.ngRedux.dispatch({type: GET_AUTH_ERROR});
+      }
+    );
   }
 
   public getTestCuisines() {

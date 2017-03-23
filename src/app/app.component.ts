@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
   photoURL: string;
   cuisines: any;
   @select('counter') count;
+  @select(s => s.authState) authState;
+
 
   constructor(
     private authService: AuthService,
@@ -39,25 +41,7 @@ export class AppComponent implements OnInit {
     });
     this.cuisines = this.authService.getTestCuisines();
 
-    this.authService.getAuth().subscribe(
-      authState => {
-        if (!authState) {
-          console.log('not logged in', authState);
-          this.displayName = null;
-          this.photoURL = null;
-          return;
-        }
-        console.log('logged in', authState);
-        // let userRef = this.af.database.object('/users/' + authState.uid);
-        // userRef.subscribe(
-        //   user => {
-        //     console.log('user: ', user);
-        //   }
-        // );
-        this.displayName = authState.auth['displayName'];
-        this.photoURL = authState.auth['photoURL'];
-      }
-    );
+    this.authService.getAuth();
   }
 
   increment() {

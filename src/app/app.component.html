@@ -5,8 +5,8 @@
 <ul>
   <li *ngFor="let c of cuisines | async"> {{ c.$value }}</li>
 </ul>
-<h1>Hello {{ displayName}}</h1>
-<img *ngIf="photoURL" src="{{ photoURL }}" alt="">
+<h1>Hello {{ (authState | async)?.auth.displayName}}</h1>
+<img *ngIf="authState" src="{{ (authState | async)?.auth.photoURL }}" alt="">
 <button (click)="authService.thirdPartyLogin(authService.thirdParties[0])">Third Party Login</button>
 <button (click)="authService.login()">Login</button>
 <button (click)="authService.logout()">Logout</button>
