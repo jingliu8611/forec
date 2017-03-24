@@ -11,6 +11,10 @@ import {NgRedux, NgReduxModule} from 'ng2-redux';
 
 import {rootReducer, INITIAL_STATE} from './store';
 import {LoginComponent} from './login/login.component';
+import {FooterComponent} from './footer/footer.component';
+import {routing} from './app.routing';
+import {HomeComponent} from './home/home.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -24,6 +28,9 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    DashboardComponent,
     LoginComponent
   ],
   imports: [
@@ -31,6 +38,7 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     NgReduxModule,
+    routing,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
