@@ -96,10 +96,6 @@ export class AuthService {
     );
   }
 
-  public getTestCuisines() {
-    return this.af.database.list('cuisines');
-  }
-
   private selectProvider(type) {
     switch (type) {
       case this.thirdParties[0]:
