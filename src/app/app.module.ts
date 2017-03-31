@@ -6,14 +6,11 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AuthService} from './shared/services/auth.service';
-import {HeaderComponent} from './header/header.component';
 import {NgRedux, NgReduxModule} from 'ng2-redux';
 
 import {rootReducer, INITIAL_STATE} from './store';
-import {LoginComponent} from './login/login.component';
-import {FooterComponent} from './footer/footer.component';
 import {routing} from './app.routing';
-import {HomeComponent} from './home/home.component';
+import {CoreModule} from "./core/core.module";
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -25,11 +22,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +30,7 @@ export const firebaseConfig = {
     HttpModule,
     NgReduxModule,
     routing,
+    CoreModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [

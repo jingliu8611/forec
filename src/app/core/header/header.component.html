@@ -15,6 +15,7 @@
   <nav>
     <div class="nav-wrapper">
       <ul class="right">
+        <a class="waves-effect waves-light btn" href="#modal1" (click)="openModal()">Sign In</a>
         <li><a class="dropdown-button right" href="#!" data-activates="dropdown1">Dropdown1<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a class="dropdown-button right" href="#!" data-activates="dropdown2">Dropdown2<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
@@ -26,4 +27,15 @@
       </ul>
     </div>
   </nav>
+</div>
+
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <fc-login></fc-login>
+  </div>
+  <div class="modal-footer">
+    <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
+  </div>
 </div>

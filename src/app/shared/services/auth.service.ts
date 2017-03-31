@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from '../../store';
-import {GET_AUTH_REQUEST, NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR} from '../../login/login.actions';
+import {GET_AUTH_REQUEST, NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR} from '../../core/login/login.actions';
 
 @Injectable()
 export class AuthService {

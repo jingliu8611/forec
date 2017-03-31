@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from './shared/services/auth.service';
 import {select} from 'ng2-redux';
+
+// declare let $;
 
 @Component({
   selector: 'fc-root',
@@ -18,4 +20,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.getAuth();
   }
+
+  // ngAfterViewInit() {
+  //   $('.modal').modal();
+  // }
+  //
+  // openModal() {
+  //   $('#modal1').modal('open');
+  // }
 }

@@ -1,4 +1,4 @@
-import {ILoginState, LOGIN_INITIAL_STATE, loginReducer} from './login/login.store';
+import {ILoginState, LOGIN_INITIAL_STATE, loginReducer} from './core/login/login.store';
 import {combineReducers} from 'redux';
 
 export interface IAppState {
