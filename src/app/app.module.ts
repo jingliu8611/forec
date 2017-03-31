@@ -14,7 +14,6 @@ import {LoginComponent} from './login/login.component';
 import {FooterComponent} from './footer/footer.component';
 import {routing} from './app.routing';
 import {HomeComponent} from './home/home.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -30,7 +29,6 @@ export const firebaseConfig = {
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    DashboardComponent,
     LoginComponent
   ],
   imports: [
