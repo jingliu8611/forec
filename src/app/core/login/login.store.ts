@@ -7,7 +7,7 @@ export interface ILoginState {
 
 export const LOGIN_INITIAL_STATE: ILoginState = {
   authState: null
-}
+};
 
 export function loginReducer(state: ILoginState = LOGIN_INITIAL_STATE, action): ILoginState {
   switch (action.type) {

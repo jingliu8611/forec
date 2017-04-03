@@ -7,7 +7,7 @@ export interface IAppState {
 
 export const INITIAL_STATE = {
   login: LOGIN_INITIAL_STATE
-}
+};
 
 export const rootReducer = combineReducers({
   login: loginReducer

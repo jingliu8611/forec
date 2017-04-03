@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AuthService} from './shared/services/auth.service';
 import {NgRedux, NgReduxModule} from 'ng2-redux';
@@ -11,6 +11,7 @@ import {NgRedux, NgReduxModule} from 'ng2-redux';
 import {rootReducer, INITIAL_STATE} from './store';
 import {routing} from './app.routing';
 import {CoreModule} from "./core/core.module";
+import {FirebaseAdapter} from "./shared/adapters/firebase.adapter";
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -34,12 +35,13 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
-    AuthService
+    AuthService,
+    FirebaseAdapter
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(ngRedux: NgRedux<any>) {
-     ngRedux.configureStore(rootReducer, INITIAL_STATE);
+    ngRedux.configureStore(rootReducer, INITIAL_STATE);
   }
 }
