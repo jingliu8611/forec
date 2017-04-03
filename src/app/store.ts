@@ -2,13 +2,13 @@ import {ILoginState, LOGIN_INITIAL_STATE, loginReducer} from './core/login/login
 import {combineReducers} from 'redux';
 
 export interface IAppState {
-  login: ILoginState;
+    login: ILoginState;
 }
 
 export const INITIAL_STATE = {
-  login: LOGIN_INITIAL_STATE
+    login: LOGIN_INITIAL_STATE
 };
 
 export const rootReducer = combineReducers({
-  login: loginReducer
+    login: loginReducer
 });

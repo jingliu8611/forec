@@ -8,4 +8,5 @@ import {stocksRouting} from './stocks.routing';
     imports: [CommonModule, stocksRouting],
     exports: []
 })
-export class StocksModule {}
+export class StocksModule {
+}

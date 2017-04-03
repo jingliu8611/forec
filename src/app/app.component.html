@@ -1,14 +1,4 @@
 <fc-header></fc-header>
-<!--<a class="waves-effect waves-light btn" href="#modal1" (click)="openModal()">Sign In</a>-->
-<!--<div id="modal1" class="modal">-->
-  <!--<div class="modal-content">-->
-    <!--<h4>Modal Header</h4>-->
-    <!--<fc-login></fc-login>-->
-  <!--</div>-->
-  <!--<div class="modal-footer">-->
-    <!--<button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>-->
-  <!--</div>-->
-<!--</div>-->
 <h1>Hello {{ (authState | async)?.auth.displayName}}</h1>
 <img *ngIf="authState" src="{{ (authState | async)?.auth.photoURL }}" alt="">
 <button (click)="authService.logout()">Logout</button>
