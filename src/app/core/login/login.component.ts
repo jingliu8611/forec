@@ -17,4 +17,25 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
+    onLogin(email, password) {
+        this.authService.login(email, password).subscribe(
+            authState => {
+                console.log('login comp - login success ', authState)
+            },
+            err => {
+                console.log('login comp - login fail ', err);
+            }
+        );
+    }
+
+    onThirdPartyLogin(thirdPartyName) {
+        this.authService.thirdPartyLogin(thirdPartyName).subscribe(
+            authState => {
+                console.log('login comp - third party login success ', authState)
+            },
+            err => {
+                console.log('login comp - third party login fail ', err);
+            }
+        );
+    }
 }

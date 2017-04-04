@@ -1,7 +1,3 @@
 <fc-header></fc-header>
-<h1>Hello {{ (authState | async)?.auth.displayName}}</h1>
-<img *ngIf="authState" src="{{ (authState | async)?.auth.photoURL }}" alt="">
-<button (click)="authService.logout()">Logout</button>
-<button (click)="authService.register()">Register</button>
 <router-outlet></router-outlet>
 <fc-footer></fc-footer>

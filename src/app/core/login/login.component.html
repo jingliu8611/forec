@@ -1,8 +1,8 @@
 <div class="login-container">
     <div class="third-party">
-        <a class="waves-effect waves-light btn" (click)="authService.thirdPartyLogin(thirdParties[0])">Google</a>
-        <a class="waves-effect waves-light btn" (click)="authService.thirdPartyLogin(thirdParties[1])">Facebook</a>
-        <a class="waves-effect waves-light btn" (click)="authService.thirdPartyLogin(thirdParties[2])">Twitter</a>
+        <a class="waves-effect waves-light btn" (click)="onThirdPartyLogin(thirdParties[0])">Google</a>
+        <a class="waves-effect waves-light btn" (click)="onThirdPartyLogin(thirdParties[1])">Facebook</a>
+        <a class="waves-effect waves-light btn" (click)="onThirdPartyLogin(thirdParties[2])">Twitter</a>
     </div>
     <div class="signup-or-separator">
         <span class="signup-or-separator--text">or</span>
@@ -12,6 +12,6 @@
         <input class="item-layout" #signinId name="email" placeholder="Email Address" type="email">
         <input class="item-layout" #signinPassword name="password" placeholder="Password" type="password">
         <a class="item-layout waves-effect waves-light btn" type="submit"
-           (click)="authService.login(signinId.value, signinPassword.value)">Log In</a>
+           (click)="onLogin(signinId.value, signinPassword.value)">Log In</a>
     </form>
 </div>

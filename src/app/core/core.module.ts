@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {FooterComponent} from './footer/footer.component';
 import {routing} from '../app.routing';
 import {LoginComponent} from './login/login.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import {LoginComponent} from './login/login.component';
         LoginComponent
     ],
     imports: [
+        CommonModule,
         routing
     ],
     exports: [

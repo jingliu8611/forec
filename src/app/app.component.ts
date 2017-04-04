@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './shared/services/auth.service';
 import {select} from 'ng2-redux';
 
 @Component({
@@ -10,11 +9,9 @@ import {select} from 'ng2-redux';
 export class AppComponent implements OnInit {
     @select(s => s.login.authState) authState;
 
-
-    constructor(private authService: AuthService,) {
+    constructor() {
     }
 
     ngOnInit() {
-        this.authService.getAuth();
     }
 }

@@ -15,11 +15,16 @@
     <nav>
         <div class="nav-wrapper">
             <ul class="right">
-                <a class="waves-effect waves-light btn" href="#modal1" (click)="openModal()">Sign In</a>
+                <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
+                   (click)="onRegister('222@gmail.com', 'admin@123')">Register</a>
+                <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn" href="#modal1"
+                   (click)="onOpenLoginModal()">Sign In</a>
+                <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">Logout</a>
                 <li><a class="dropdown-button right" href="#!" data-activates="dropdown1">Dropdown1<i
                         class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button right" href="#!" data-activates="dropdown2">Dropdown2<i
                         class="material-icons right">arrow_drop_down</i></a></li>
+                <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.auth.displayName}}</li>
             </ul>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
