@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import {HomeComponent} from './home/home.component';
 import {FooterComponent} from './footer/footer.component';
-import {routing} from '../app.routing';
 import {LoginComponent} from './login/login.component';
 import {CommonModule} from '@angular/common';
+import {AppRoutingModule} from '../app-routing.module';
 
 @NgModule({
     declarations: [
@@ -15,9 +15,10 @@ import {CommonModule} from '@angular/common';
     ],
     imports: [
         CommonModule,
-        routing
+        AppRoutingModule
     ],
     exports: [
+        AppRoutingModule,
         HeaderComponent,
         FooterComponent
     ]

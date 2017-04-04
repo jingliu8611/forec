@@ -8,9 +8,9 @@ import {AuthService} from './shared/services/auth.service';
 import {NgRedux, NgReduxModule} from 'ng2-redux';
 
 import {rootReducer, INITIAL_STATE} from './store';
-import {routing} from './app.routing';
 import {CoreModule} from './core/core.module';
 import {FirebaseAdapter} from './shared/adapters/firebase.adapter';
+import {AppRoutingModule} from './app-routing.module';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -28,7 +28,7 @@ export const firebaseConfig = {
         BrowserModule,
         HttpModule,
         NgReduxModule,
-        routing,
+        AppRoutingModule,
         CoreModule,
         AngularFireModule.initializeApp(firebaseConfig)
     ],
