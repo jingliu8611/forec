@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {select} from 'ng2-redux';
-import {IAppState} from '../store';
 
 @Component({
     selector: 'fc-stocks',
@@ -8,7 +7,7 @@ import {IAppState} from '../store';
     styleUrls: ['./stocks.component.scss']
 })
 export class StocksComponent implements OnInit {
-    @select((s: IAppState) => s.login.authState) authState;
+    @select(['login', 'authState']) authState;
 
     constructor() {
     }

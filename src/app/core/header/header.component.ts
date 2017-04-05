@@ -1,7 +1,6 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {AuthService} from '../../shared/services/auth.service';
 import {select} from 'ng2-redux';
-import {IAppState} from '../../store';
 
 declare let $;
 
@@ -11,7 +10,8 @@ declare let $;
     styleUrls: ['header.component.scss']
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-    @select((s: IAppState) => s.login.authState) authStateA;
+    // @select((s: IAppState) => s.login.authState) authStateA;
+    @select(['login', 'authState']) authStateA;
 
     constructor(private authService: AuthService) {
     }
