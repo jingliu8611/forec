@@ -3,6 +3,7 @@ import {AuthService} from './auth.service';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from '../../store';
 import {NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR, GET_AUTH_REQUEST} from '../../core/login/login.actions';
+import {TranslateService} from 'ng2-translate';
 
 declare let $;
 
@@ -10,7 +11,8 @@ declare let $;
 export class InitService {
 
     constructor(private authService: AuthService,
-                private ngRedux: NgRedux<IAppState>) {
+                private ngRedux: NgRedux<IAppState>,
+                private translate: TranslateService) {
     }
 
     load() {
@@ -32,6 +34,7 @@ export class InitService {
                 this.ngRedux.dispatch({type: GET_AUTH_ERROR});
             }
         );
+        this.translate.setDefaultLang('en');
     }
 
     private closeLoginModal() {
