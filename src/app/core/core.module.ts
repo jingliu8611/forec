@@ -10,8 +10,12 @@ import {AuthService} from '../shared/services/auth.service';
 import {FirebaseAdapter} from '../shared/adapters/firebase.adapter';
 import {InitService} from '../shared/services/init.service';
 import {rootReducer, INITIAL_STATE} from '../store';
+import {TranslateModule, TranslateLoader} from 'ng2-translate';
+import {createTranslateLoader, firebaseConfig} from '../shared/constants/config';
+import {Http} from '@angular/http';
+import {AngularFireModule} from 'angularfire2';
 
-export function initFactory (initService: InitService) {
+export function initFactory(initService: InitService) {
     return () => initService.load();
 }
 
@@ -24,22 +28,31 @@ export function initFactory (initService: InitService) {
     ],
     imports: [
         CommonModule,
-        AppRoutingModule
+        AppRoutingModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (createTranslateLoader),
+            deps: [Http]
+        })
     ],
     providers: [
         AuthService,
         FirebaseAdapter,
         InitService,
-        { provide: APP_INITIALIZER,
+        {
+            provide: APP_INITIALIZER,
             useFactory: initFactory,
             deps: [InitService],
-            multi: true }
+            multi: true
+        }
     ],
     exports: [
         AppRoutingModule,
         HeaderComponent,
         FooterComponent,
-        NgReduxModule
+        NgReduxModule,
+        TranslateModule
     ]
 })
 export class CoreModule {

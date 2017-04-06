@@ -12,6 +12,6 @@
         <input class="item-layout" #signinId name="email" placeholder="Email Address" type="email">
         <input class="item-layout" #signinPassword name="password" placeholder="Password" type="password">
         <a class="item-layout waves-effect waves-light btn" type="submit"
-           (click)="onLogin(signinId.value, signinPassword.value)">Log In</a>
+           (click)="onLogin(signinId.value, signinPassword.value)">{{ 'AUTH.LOGIN' | translate }}</a>
     </form>
 </div>

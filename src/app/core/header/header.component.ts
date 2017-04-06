@@ -1,6 +1,7 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {AuthService} from '../../shared/services/auth.service';
 import {select} from 'ng2-redux';
+import {TranslateService} from 'ng2-translate';
 
 declare let $;
 
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     // @select((s: IAppState) => s.login.authState) authStateA;
     @select(['login', 'authState']) authStateA;
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService,
+                private translateService: TranslateService) {
     }
 
     ngOnInit() {
@@ -47,5 +49,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
                 console.log('header comp - register fail ', err);
             }
         );
+    }
+
+    onChangeLocale(newLocale: string) {
+        this.translateService.setDefaultLang(newLocale);
     }
 }

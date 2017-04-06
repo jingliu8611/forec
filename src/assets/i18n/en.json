@@ -1,0 +1,18 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "DASH": "Dashboard",
+    "STOCK": "Stocks",
+    "FORM": "Formulas",
+    "LANG": {
+      "MENU": "Language",
+      "EN": "English",
+      "ZH": "Chinese"
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "REG": "Register"
+  }
+}
