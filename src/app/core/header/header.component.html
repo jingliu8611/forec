@@ -3,10 +3,8 @@
     <li><a (click)="onChangeLocale('zh')">{{ 'HEADER.LANG.ZH' | translate}}</a></li>
 </ul>
 <ul id="dropdown2" class="dropdown-content">
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">three</a></li>
+    <li><a (click)="onSwitchTheme('theme-1')">{{ 'HEADER.THEME.TH1' | translate}}</a></li>
+    <li><a (click)="onSwitchTheme('theme-2')">{{ 'HEADER.THEME.TH2' | translate}}</a></li>
 </ul>
 
 <div class="navbar-fixed">
@@ -15,12 +13,12 @@
             <ul class="right">
                 <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
                    (click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>
-                <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn" href="#modal1"
+                <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
                    (click)="onOpenLoginModal()">{{ 'AUTH.LOGIN' | translate }}</a>
                 <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">{{ 'AUTH.LOGOUT' | translate }}</a>
-                <li><a class="dropdown-button right" href="#!" data-activates="dropdown1">{{ 'HEADER.LANG.MENU' | translate}}<i
+                <li><a class="dropdown-button right" data-activates="dropdown1">{{ 'HEADER.LANG.MENU' | translate}}<i
                         class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button right" href="#!" data-activates="dropdown2">Dropdown2<i
+                <li><a class="dropdown-button right" data-activates="dropdown2">{{ 'HEADER.THEME.BTN' | translate}}<i
                         class="material-icons right">arrow_drop_down</i></a></li>
                 <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.auth.displayName}}</li>
             </ul>

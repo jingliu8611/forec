@@ -2,19 +2,21 @@ import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {AuthService} from '../../shared/services/auth.service';
 import {select} from 'ng2-redux';
 import {TranslateService} from 'ng2-translate';
+import {ThemeService} from '../../shared/services/theme.service';
 
 declare let $;
 
 @Component({
     selector: 'fc-header',
     templateUrl: 'header.component.html',
-    styleUrls: ['header.component.scss']
+    styleUrls: ['header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
     // @select((s: IAppState) => s.login.authState) authStateA;
     @select(['login', 'authState']) authStateA;
 
     constructor(private authService: AuthService,
+                private themeService: ThemeService,
                 private translateService: TranslateService) {
     }
 
@@ -53,5 +55,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     onChangeLocale(newLocale: string) {
         this.translateService.setDefaultLang(newLocale);
+    }
+
+    onSwitchTheme(themeName: string) {
+        this.themeService.switchTheme(themeName);
     }
 }

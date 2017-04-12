@@ -1,0 +1,4 @@
+@import './../../../theme';
+nav {
+  @include background-color('background');
+}
