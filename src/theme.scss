@@ -1,0 +1,32 @@
+$themes: (
+        'theme-1': (
+                'primary': #A99272,
+                'accent': #FFFAF3,
+                'background': #ECE0D1
+        ),
+        'theme-2': (
+                'primary': #3675A9,
+                'accent': #8EABC3,
+                'background': #283C4D
+        )
+) !default;
+
+@mixin themify($property, $key, $themes: $themes) {
+  @each $theme, $colors in $themes {
+    :host-context(.#{$theme}) & {
+      #{$property}: map-get($colors, $key);
+    }
+  }
+}
+
+@mixin color($arguments...) {
+  @include themify('color', $arguments...);
+}
+
+@mixin border-color($arguments...) {
+  @include themify('border-color', $arguments...);
+}
+
+@mixin background-color($arguments...) {
+  @include themify('background-color', $arguments...);
+}

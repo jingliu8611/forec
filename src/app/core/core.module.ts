@@ -14,6 +14,7 @@ import {TranslateModule, TranslateLoader} from 'ng2-translate';
 import {createTranslateLoader, firebaseConfig} from '../shared/constants/config';
 import {Http} from '@angular/http';
 import {AngularFireModule} from 'angularfire2';
+import {ThemeService} from '../shared/services/theme.service';
 
 export function initFactory(initService: InitService) {
     return () => initService.load();
@@ -38,6 +39,7 @@ export function initFactory(initService: InitService) {
     ],
     providers: [
         AuthService,
+        ThemeService,
         FirebaseAdapter,
         InitService,
         {
