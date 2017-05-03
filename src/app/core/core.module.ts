@@ -5,7 +5,7 @@ import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {CommonModule} from '@angular/common';
 import {AppRoutingModule} from '../app-routing.module';
-import {NgReduxModule, NgRedux} from 'ng2-redux';
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import {AuthService} from '../shared/services/auth.service';
 import {FirebaseAdapter} from '../shared/adapters/firebase.adapter';
 import {InitService} from '../shared/services/init.service';

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
-import {NgRedux} from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import {IAppState} from '../../store';
 import {NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR, GET_AUTH_REQUEST} from '../../core/login/login.actions';
 import {TranslateService} from 'ng2-translate';
@@ -17,7 +17,8 @@ export class InitService {
 
     load() {
         console.log('this is init service!');
-        this.ngRedux.dispatch({type: GET_AUTH_REQUEST});
+        // this gives run time error, why?
+        // this.ngRedux.dispatch({type: GET_AUTH_REQUEST});
         this.authService.getAuth().subscribe(
             authState => {
                 if (!authState) {

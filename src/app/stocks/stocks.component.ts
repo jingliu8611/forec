@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {select} from 'ng2-redux';
+import {select} from '@angular-redux/store/lib/src/decorators/select';
 
 @Component({
     selector: 'fc-stocks',
