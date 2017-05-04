@@ -1,5 +1,5 @@
 import {Http} from '@angular/http';
-import {TranslateStaticLoader} from 'ng2-translate';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyCzCGkdxYH6rzfEuVwrTD2pLKNcJDgYbzw',
@@ -10,5 +10,5 @@ export const firebaseConfig = {
 };
 
 export function createTranslateLoader(http: Http) {
-    return new TranslateStaticLoader(http, './assets/i18n', '.json');
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

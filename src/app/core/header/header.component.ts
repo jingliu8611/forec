@@ -1,8 +1,9 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {AuthService} from '../../shared/services/auth.service';
 import {select} from '@angular-redux/store/lib/src/decorators/select';
-import {TranslateService} from 'ng2-translate';
 import {ThemeService} from '../../shared/services/theme.service';
+import {LocaleService} from '../../shared/services/locale.service';
+import {LANGUAGES} from '../../shared/constants/languages';
 
 declare let $;
 
@@ -14,10 +15,11 @@ declare let $;
 export class HeaderComponent implements OnInit, AfterViewInit {
     // @select((s: IAppState) => s.login.authState) authStateA;
     @select(['login', 'authState']) authStateA;
+    langs = LANGUAGES;
 
     constructor(private authService: AuthService,
                 private themeService: ThemeService,
-                private translateService: TranslateService) {
+                private localeService: LocaleService) {
     }
 
     ngOnInit() {
@@ -53,8 +55,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         );
     }
 
-    onChangeLocale(newLocale: string) {
-        this.translateService.setDefaultLang(newLocale);
+    onChangeLocale(lang: string) {
+        this.localeService.switchLang(lang);
     }
 
     onSwitchTheme(themeName: string) {

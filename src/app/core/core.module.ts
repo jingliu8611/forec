@@ -1,4 +1,4 @@
-import {NgModule, APP_INITIALIZER} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import {HomeComponent} from './home/home.component';
 import {FooterComponent} from './footer/footer.component';
@@ -8,17 +8,13 @@ import {AppRoutingModule} from '../app-routing.module';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import {AuthService} from '../shared/services/auth.service';
 import {FirebaseAdapter} from '../shared/adapters/firebase.adapter';
-import {InitService} from '../shared/services/init.service';
 import {rootReducer, INITIAL_STATE} from '../store';
-import {TranslateModule, TranslateLoader} from 'ng2-translate';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {createTranslateLoader, firebaseConfig} from '../shared/constants/config';
 import {Http} from '@angular/http';
 import {AngularFireModule} from 'angularfire2';
 import {ThemeService} from '../shared/services/theme.service';
-
-export function initFactory(initService: InitService) {
-    return () => initService.load();
-}
+import {LocaleService} from '../shared/services/locale.service';
 
 @NgModule({
     declarations: [
@@ -32,22 +28,18 @@ export function initFactory(initService: InitService) {
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig),
         TranslateModule.forRoot({
-            provide: TranslateLoader,
-            useFactory: (createTranslateLoader),
-            deps: [Http]
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [Http]
+            }
         })
     ],
     providers: [
         AuthService,
         ThemeService,
-        FirebaseAdapter,
-        InitService,
-        {
-            provide: APP_INITIALIZER,
-            useFactory: initFactory,
-            deps: [InitService],
-            multi: true
-        }
+        LocaleService,
+        FirebaseAdapter
     ],
     exports: [
         AppRoutingModule,

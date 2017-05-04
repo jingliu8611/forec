@@ -1,6 +1,6 @@
 <ul id="dropdown1" class="dropdown-content">
-    <li><a (click)="onChangeLocale('en')">{{ 'HEADER.LANG.EN' | translate}}</a></li>
-    <li><a (click)="onChangeLocale('zh')">{{ 'HEADER.LANG.ZH' | translate}}</a></li>
+    <li><a (click)="onChangeLocale(langs.en)">{{ 'HEADER.LANG.EN' | translate}}</a></li>
+    <li><a (click)="onChangeLocale(langs.zh)">{{ 'HEADER.LANG.ZH' | translate}}</a></li>
 </ul>
 <ul id="dropdown2" class="dropdown-content">
     <li><a (click)="onSwitchTheme('theme-1')">{{ 'HEADER.THEME.TH1' | translate}}</a></li>
