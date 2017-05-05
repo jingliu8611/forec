@@ -1,27 +1,20 @@
-import {Injectable} from "@angular/core";
-import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
-import {Observable} from "rxjs";
-import {THIRD_PARTIES} from "../constants/third-party-login";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {THIRD_PARTIES} from '../constants/third-party-login';
+import {AngularFireAuth} from 'angularfire2/auth/auth';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class FirebaseAdapter {
 
 
-    constructor(private af: AngularFire) {
+    constructor(private afAuth: AngularFireAuth) {
     }
 
     login(email, password) {
         return Observable.fromPromise(
             new Promise((resolve, reject) => {
-                this.af.auth.login({
-                    // email: 'test@gmail.com',
-                    // password: 'admin@123'
-                    email: email,
-                    password: password
-                }, {
-                    provider: AuthProviders.Password,
-                    method: AuthMethods.Password
-                }).then(
+                this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
                     authState => resolve(authState)
                 ).catch(
                     err => reject(err)
@@ -33,10 +26,7 @@ export class FirebaseAdapter {
     thirdPartyLogin(type) {
         return Observable.fromPromise(
             new Promise((resolve, reject) => {
-                this.af.auth.login({
-                    provider: this.selectProvider(type),
-                    method: AuthMethods.Popup
-                }).then(
+                this.afAuth.auth.signInWithPopup(this.selectProvider(type)).then(
                     authState => resolve(authState)
                 ).catch(
                     err => reject(err)
@@ -48,7 +38,7 @@ export class FirebaseAdapter {
     logout() {
         return Observable.fromPromise(
             new Promise((resolve, reject) => {
-                this.af.auth.logout().then(
+                this.afAuth.auth.signOut().then(
                     () => resolve()
                 ).catch(
                     err => reject(err)
@@ -60,10 +50,7 @@ export class FirebaseAdapter {
     register(email, password) {
         return Observable.fromPromise(
             new Promise((resolve, reject) => {
-                this.af.auth.createUser({
-                    email: email,
-                    password: password
-                }).then(
+                this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
                     authState => resolve(authState)
                 ).catch(
                     err => reject(err)
@@ -73,17 +60,17 @@ export class FirebaseAdapter {
     }
 
     getAuth() {
-        return this.af.auth;
+        return this.afAuth.authState;
     }
 
     private selectProvider(type) {
         switch (type) {
             case THIRD_PARTIES[0]:
-                return AuthProviders.Google;
+                return new firebase.auth.GoogleAuthProvider();
             case THIRD_PARTIES[1]:
-                return AuthProviders.Facebook;
+                return new firebase.auth.FacebookAuthProvider();
             default:
-                return AuthProviders.Twitter;
+                return new firebase.auth.TwitterAuthProvider();
         }
     }
 }

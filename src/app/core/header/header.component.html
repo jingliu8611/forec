@@ -20,7 +20,7 @@
                         class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button right" data-activates="dropdown2">{{ 'HEADER.THEME.BTN' | translate}}<i
                         class="material-icons right">arrow_drop_down</i></a></li>
-                <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.auth.displayName}}</li>
+                <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.displayName}}</li>
             </ul>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li routerLinkActive="active"><a [routerLink]="['/home']">{{ 'HEADER.HOME' | translate}}</a></li>

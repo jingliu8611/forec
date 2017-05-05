@@ -5,7 +5,7 @@ import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {CommonModule} from '@angular/common';
 import {AppRoutingModule} from '../app-routing.module';
-import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import {NgReduxModule, NgRedux} from '@angular-redux/store';
 import {AuthService} from '../shared/services/auth.service';
 import {FirebaseAdapter} from '../shared/adapters/firebase.adapter';
 import {rootReducer, INITIAL_STATE} from '../store';
@@ -15,6 +15,8 @@ import {Http} from '@angular/http';
 import {AngularFireModule} from 'angularfire2';
 import {ThemeService} from '../shared/services/theme.service';
 import {LocaleService} from '../shared/services/locale.service';
+import {AngularFireDatabaseModule} from 'angularfire2/database/database.module';
+import {AngularFireAuthModule} from 'angularfire2/auth/auth.module';
 
 @NgModule({
     declarations: [
@@ -27,6 +29,8 @@ import {LocaleService} from '../shared/services/locale.service';
         CommonModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
