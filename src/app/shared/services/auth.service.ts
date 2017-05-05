@@ -2,18 +2,16 @@ import {Injectable} from '@angular/core';
 import {FirebaseAdapter} from '../adapters/firebase.adapter';
 import {THIRD_PARTIES} from '../constants/third-party-login';
 import {NgRedux} from '@angular-redux/store';
-import {IAppState} from '../../store';
 import {GET_AUTH_REQUEST, NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR} from '../../core/login/login.actions';
+import {IAppState} from '../../core/store/store';
 
 declare let $;
 
 @Injectable()
 export class AuthService {
 
-    constructor(
-        private ngRedux: NgRedux<IAppState>,
-        private adapter: FirebaseAdapter
-    ) {
+    constructor(private ngRedux:NgRedux<IAppState>,
+                private adapter:FirebaseAdapter) {
         this.ngRedux.dispatch({type: GET_AUTH_REQUEST});
         this.getAuth().subscribe(
             authState => {

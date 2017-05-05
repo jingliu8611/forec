@@ -5,10 +5,9 @@ import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {CommonModule} from '@angular/common';
 import {AppRoutingModule} from '../app-routing.module';
-import {NgReduxModule, NgRedux} from '@angular-redux/store';
+import {NgReduxModule} from '@angular-redux/store';
 import {AuthService} from '../shared/services/auth.service';
 import {FirebaseAdapter} from '../shared/adapters/firebase.adapter';
-import {rootReducer, INITIAL_STATE} from '../store';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {createTranslateLoader, firebaseConfig} from '../shared/constants/config';
 import {Http} from '@angular/http';
@@ -17,6 +16,7 @@ import {ThemeService} from '../shared/services/theme.service';
 import {LocaleService} from '../shared/services/locale.service';
 import {AngularFireDatabaseModule} from 'angularfire2/database/database.module';
 import {AngularFireAuthModule} from 'angularfire2/auth/auth.module';
+import {StoreModule} from './store/store.module';
 
 @NgModule({
     declarations: [
@@ -50,11 +50,9 @@ import {AngularFireAuthModule} from 'angularfire2/auth/auth.module';
         HeaderComponent,
         FooterComponent,
         NgReduxModule,
+        StoreModule,
         TranslateModule
     ]
 })
 export class CoreModule {
-    constructor(ngRedux: NgRedux<any>) {
-        ngRedux.configureStore(rootReducer, INITIAL_STATE);
-    }
 }
