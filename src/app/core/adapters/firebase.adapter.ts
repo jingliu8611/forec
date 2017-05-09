@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {THIRD_PARTIES} from '../constants/third-party-login';
 import {AngularFireAuth} from 'angularfire2/auth/auth';
 import * as firebase from 'firebase/app';
+import {THIRD_PARTIES} from '../../shared/constants/third-party-login';
 
 @Injectable()
 export class FirebaseAdapter {

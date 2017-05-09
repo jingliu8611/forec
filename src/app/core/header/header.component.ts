@@ -1,8 +1,8 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
-import {AuthService} from '../../shared/services/auth.service';
+import {AuthService} from '../services/auth.service';
 import {select} from '@angular-redux/store/lib/src/decorators/select';
-import {ThemeService} from '../../shared/services/theme.service';
-import {LocaleService} from '../../shared/services/locale.service';
+import {ThemeService} from '../services/theme.service';
+import {LocaleService} from '../services/locale.service';
 import {LANGUAGES} from '../../shared/constants/languages';
 
 declare let $;

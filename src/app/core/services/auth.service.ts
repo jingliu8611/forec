@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {FirebaseAdapter} from '../adapters/firebase.adapter';
-import {THIRD_PARTIES} from '../constants/third-party-login';
 import {NgRedux} from '@angular-redux/store';
-import {GET_AUTH_REQUEST, NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR} from '../../core/login/login.actions';
-import {IAppState} from '../../core/store/store';
+import {GET_AUTH_REQUEST, NOT_LOGGED_IN, LOGGED_IN, GET_AUTH_ERROR} from '../login/login.actions';
+import {IAppState} from '../store/store';
+import {FirebaseAdapter} from '../adapters/firebase.adapter';
+import {THIRD_PARTIES} from '../../shared/constants/third-party-login';
 
 declare let $;
 

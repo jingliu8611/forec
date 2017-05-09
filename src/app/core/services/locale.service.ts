@@ -1,6 +1,6 @@
 import {TranslateService} from '@ngx-translate/core';
 import {Injectable} from '@angular/core';
-import {LANGUAGES} from '../constants/languages';
+import {LANGUAGES} from '../../shared/constants/languages';
 
 @Injectable()
 export class LocaleService {
