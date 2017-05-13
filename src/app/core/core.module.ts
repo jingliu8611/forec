@@ -7,7 +7,7 @@ import {CommonModule} from '@angular/common';
 import {AppRoutingModule} from '../app-routing.module';
 import {NgReduxModule} from '@angular-redux/store';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {createTranslateLoader, firebaseConfig} from '../shared/constants/config';
+import {createTranslateLoader, firebaseConfig} from '../constants/config';
 import {Http} from '@angular/http';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database/database.module';
@@ -15,7 +15,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth/auth.module';
 import {StoreModule} from './store/store.module';
 import {AuthService} from './services/auth.service';
 import {LocaleService} from './services/locale.service';
-import {FirebaseAdapter} from './adapters/firebase.adapter';
+import {FirebaseAdapter} from './adapters/auth.firebase.adapter';
 import {ThemeService} from './services/theme.service';
 
 @NgModule({

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
-import {THIRD_PARTIES} from '../../shared/constants/third-party-login';
+import {THIRD_PARTIES} from '../../constants/third-party-login';
 
 @Component({
     selector: 'fc-login',

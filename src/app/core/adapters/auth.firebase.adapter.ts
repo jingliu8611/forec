@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AngularFireAuth} from 'angularfire2/auth/auth';
 import * as firebase from 'firebase/app';
-import {THIRD_PARTIES} from '../../shared/constants/third-party-login';
+import {THIRD_PARTIES} from '../../constants/third-party-login';
 
 @Injectable()
 export class FirebaseAdapter {
@@ -26,7 +26,7 @@ export class FirebaseAdapter {
     thirdPartyLogin(type) {
         return Observable.fromPromise(
             new Promise((resolve, reject) => {
-                this.afAuth.auth.signInWithPopup(this.selectProvider(type)).then(
+                this.afAuth.auth.signInWithPopup(FirebaseAdapter.selectProvider(type)).then(
                     authState => resolve(authState)
                 ).catch(
                     err => reject(err)
@@ -63,7 +63,7 @@ export class FirebaseAdapter {
         return this.afAuth.authState;
     }
 
-    private selectProvider(type) {
+    private static selectProvider(type) {
         switch (type) {
             case THIRD_PARTIES[0]:
                 return new firebase.auth.GoogleAuthProvider();

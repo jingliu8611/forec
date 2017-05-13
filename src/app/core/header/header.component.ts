@@ -3,7 +3,7 @@ import {AuthService} from '../services/auth.service';
 import {select} from '@angular-redux/store/lib/src/decorators/select';
 import {ThemeService} from '../services/theme.service';
 import {LocaleService} from '../services/locale.service';
-import {LANGUAGES} from '../../shared/constants/languages';
+import {LANGUAGES} from '../../constants/languages';
 
 declare let $;
 

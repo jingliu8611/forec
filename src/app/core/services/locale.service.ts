@@ -1,13 +1,13 @@
 import {TranslateService} from '@ngx-translate/core';
 import {Injectable} from '@angular/core';
-import {LANGUAGES} from '../../shared/constants/languages';
+import {LANGUAGES} from '../../constants/languages';
 
 @Injectable()
 export class LocaleService {
     constructor(
         private translate: TranslateService
     ) {
-        this.translate.setDefaultLang(LANGUAGES.default);
+        this.translate.setDefaultLang(LANGUAGES.defaultLang);
     }
 
     switchLang(lang: string) {
