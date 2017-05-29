@@ -1,0 +1,6 @@
+<div class="symbol-search-container">
+    <input type="text" #symbolInput>
+    <ul>
+        <li *ngFor="let symbol of symbolList">{{symbol?.name}}</li>
+    </ul>
+</div>
