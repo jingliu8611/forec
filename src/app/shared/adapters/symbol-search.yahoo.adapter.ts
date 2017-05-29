@@ -5,7 +5,6 @@ import {Jsonp} from '@angular/http';
 export class SymbolSearchYahooAdapter {
     apiRoot: string = 'http://autoc.finance.yahoo.com/autoc';
 
-
     constructor(
         private jsonp: Jsonp
     ) {}

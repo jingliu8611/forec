@@ -1,5 +1,5 @@
 <div class="symbol-search-container">
-    <input type="text" (keyup)="onSearchSymbol(symbolInput.value)" #symbolInput>
+    <input type="text" #symbolInput>
     <ul>
         <li *ngFor="let symbol of symbolList">{{symbol?.name}}</li>
     </ul>
