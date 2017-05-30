@@ -1,7 +1,5 @@
 @import './../../theme';
-
 .stocks-container {
-  height: 800px;
   @include color('primary-font');
   @include background-color('primary');
   .symbol-search {
