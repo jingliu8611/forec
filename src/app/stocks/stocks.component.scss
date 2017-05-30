@@ -1,4 +1,11 @@
-.symbol-search {
-  width: 500px;
-  height: 50px;
+@import './../../theme';
+
+.stocks-container {
+  height: 800px;
+  @include color('primary-font');
+  @include background-color('primary');
+  .symbol-search {
+    width: 500px;
+    height: 50px;
+  }
 }
