@@ -1,4 +1,9 @@
-.symbol-search {
-  width: 500px;
-  height: 50px;
+@import './../../theme';
+.stocks-container {
+  @include color('primary-font');
+  @include background-color('primary');
+  .symbol-search {
+    width: 500px;
+    height: 50px;
+  }
 }

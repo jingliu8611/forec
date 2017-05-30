@@ -61,5 +61,31 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     onSwitchTheme(themeName: string) {
         this.themeService.switchTheme(themeName);
+        this.toggleRedLine(themeName);
+    }
+
+    toggleRedLine(themeName) {
+        let elem = $('#thin-red-line');
+        if (themeName === 'theme-2') {
+            let width = 1;
+            let id = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(id);
+                } else {
+                    width++;
+                    elem.width(width + '%');
+                }
+            }, 10);
+        } else {
+            let width = 100;
+            let id = setInterval(() => {
+                if (width <= 0) {
+                    clearInterval(id);
+                } else {
+                    width--;
+                    elem.width(width + '%');
+                }
+            }, 10);
+        }
     }
 }

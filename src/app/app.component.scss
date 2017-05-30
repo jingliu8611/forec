@@ -1,0 +1,8 @@
+@import './../theme';
+.content {
+  @include color('primary-font');
+  @include background-color('primary');
+  width: 100%;
+  height: calc(100% - 66px);
+  overflow: hidden;
+}

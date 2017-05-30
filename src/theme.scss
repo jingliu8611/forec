@@ -1,13 +1,17 @@
 $themes: (
         'theme-1': (
-                'primary': #A99272,
-                'accent': #FFFAF3,
-                'background': #ECE0D1
+                'primary': #F2F2F2,
+                'secondary': #83BDBC,
+                'primary-font': #4D89A5,
+                'secondary-font': #E7F9FF,
+                'accent': #213B47
         ),
         'theme-2': (
-                'primary': #3675A9,
-                'accent': #8EABC3,
-                'background': #283C4D
+                'primary': #F4E8C8,
+                'secondary': #688693,
+                'primary-font': #24130C,
+                'secondary-font': #fffde8,
+                'accent': #5D4C18
         )
 ) !default;
 
