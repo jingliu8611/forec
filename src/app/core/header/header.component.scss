@@ -9,6 +9,12 @@ nav {
     @include color('secondary-font');
     @include background-color('accent');
   }
+  > div > ul > a.setting-icon {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 64px;
+    text-align: center;
+  }
 }
 .dropdown-content {
   @include background-color('accent');

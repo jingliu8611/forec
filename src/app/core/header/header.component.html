@@ -16,6 +16,9 @@
                 <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
                    (click)="onOpenLoginModal()">{{ 'AUTH.LOGIN' | translate }}</a>
                 <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">{{ 'AUTH.LOGOUT' | translate }}</a>
+                <a class="waves-effect waves-light setting-icon" [routerLink]="['/settings']">
+                    <i class="material-icons">settings</i>
+                </a>
                 <li><a class="dropdown-button right" data-activates="dropdown1">{{ 'HEADER.LANG.MENU' | translate}}<i
                         class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-button right" data-activates="dropdown2">{{ 'HEADER.THEME.BTN' | translate}}<i
