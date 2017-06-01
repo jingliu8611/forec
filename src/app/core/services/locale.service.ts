@@ -15,10 +15,6 @@ export class LocaleService {
     }
 
     getCurLang() {
-        return this.translate.currentLang;
-    }
-
-    getDefaultlang() {
-        return this.translate.defaultLang;
+        return this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang;
     }
 }

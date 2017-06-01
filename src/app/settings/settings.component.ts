@@ -35,7 +35,7 @@ export class SettingsComponent implements OnInit, AfterViewInit {
         } else {
             $('#theme-2-tab').addClass('active');
         }
-        if (this.localeService.getCurLang() === 'en' || (this.localeService.getCurLang() === undefined && this.localeService.getDefaultlang() === 'en')) {
+        if (this.localeService.getCurLang() === 'en') {
             $('#lang-en-tab').addClass('active');
         } else {
             $('#lang-zh-tab').addClass('active');
