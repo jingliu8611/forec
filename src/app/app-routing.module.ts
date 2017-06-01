@@ -7,6 +7,7 @@ const appRoutes: Routes = [
     {path: 'stocks', loadChildren: 'app/stocks/stocks.module#StocksModule'},
     {path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
     {path: 'formulas', loadChildren: 'app/formulas/formulas.module#FormulasModule'},
+    {path: 'settings', loadChildren: 'app/settings/settings.module#StocksModule'},
     {path: '**', redirectTo: '/home'}
 ];
 

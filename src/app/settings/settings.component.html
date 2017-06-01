@@ -1,0 +1,39 @@
+<!--<ul id="dropdown1" class="dropdown-content">-->
+    <!--<li><a (click)="onChangeLocale(langs.en)">{{ 'HEADER.LANG.EN' | translate}}</a></li>-->
+    <!--<li><a (click)="onChangeLocale(langs.zh)">{{ 'HEADER.LANG.ZH' | translate}}</a></li>-->
+<!--</ul>-->
+<!--<ul id="dropdown2" class="dropdown-content">-->
+    <!--<li><a (click)="onSwitchTheme('theme-1')">{{ 'HEADER.THEME.TH1' | translate}}</a></li>-->
+    <!--<li><a (click)="onSwitchTheme('theme-2')">{{ 'HEADER.THEME.TH2' | translate}}</a></li>-->
+<!--</ul>-->
+<div class="settings-container">
+    <div class="left">
+        <div class="section">
+            <label for="theme-tabs">{{ 'HEADER.THEME.BTN' | translate}}</label>
+            <!--<a id="theme-dropdown" class='dropdown-button btn' data-activates='dropdown2'>-->
+                <!--{{ (themeService.getCurrentTheme() === 'theme-1' ? 'HEADER.THEME.TH1' : 'HEADER.THEME.TH2') |-->
+                <!--translate}}-->
+                <!--<i class="material-icons right">arrow_drop_down</i>-->
+            <!--</a>-->
+            <ul id="theme-tabs" class="tabs">
+                <li class="tab col s3"><a (click)="onSwitchTheme('theme-1')" id="theme-1-tab">{{ 'HEADER.THEME.TH1' | translate}}</a></li>
+                <li class="tab col s3 disabled"><a>/</a></li>
+                <li class="tab col s3"><a (click)="onSwitchTheme('theme-2')" id="theme-2-tab">{{ 'HEADER.THEME.TH2' | translate}}</a></li>
+            </ul>
+        </div>
+        <div class="section">
+            <label for="lang-tabs">{{ 'HEADER.LANG.MENU' | translate}}</label>
+            <!--<a id="lang-dropdown" class='dropdown-button btn' data-activates='dropdown1'>{{ (localeService.getCurLang() === 'en' ? 'HEADER.LANG.EN' : 'HEADER.LANG.ZH') |-->
+                <!--translate}}-->
+                <!--<i class="material-icons right">arrow_drop_down</i>-->
+            <!--</a>-->
+            <ul id="lang-tabs" class="tabs">
+                <li class="tab col s3"><a (click)="onChangeLocale(langs.en)" id="lang-en-tab">{{ 'HEADER.LANG.EN' | translate}}</a></li>
+                <li class="tab col s3 disabled"><a>/</a></li>
+                <li class="tab col s3"><a (click)="onChangeLocale(langs.zh)" id="lang-zh-tab">{{ 'HEADER.LANG.ZH' | translate}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+    </div>
+</div>
