@@ -25,6 +25,23 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         $('#theme-dropdown').dropdown();
         $('#lang-dropdown').dropdown();
+        this.initTabs();
+
+    }
+
+    initTabs() {
+        if (this.themeService.getCurrentTheme() === 'theme-1') {
+            $('#theme-1-tab').addClass('active');
+        } else {
+            $('#theme-2-tab').addClass('active');
+        }
+        if (this.localeService.getCurLang() === 'en' || (this.localeService.getCurLang() === undefined && this.localeService.getDefaultlang() === 'en')) {
+            $('#lang-en-tab').addClass('active');
+        } else {
+            $('#lang-zh-tab').addClass('active');
+        }
+        $('#lang-tabs, #theme-tabs').tabs();
+        $('#lang-tabs > div, #theme-tabs > div').remove();
     }
 
     onChangeLocale(lang: string) {
