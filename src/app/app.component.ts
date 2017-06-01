@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ThemeService} from './core/services/theme.service';
+import {LocaleService} from './core/services/locale.service';
 
 @Component({
     selector: 'fc-root',
@@ -7,7 +9,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    constructor() {
+    constructor(
+        // init services
+        private themeService: ThemeService,
+        private localeService: LocaleService
+    ) {
     }
 
     ngOnInit() {

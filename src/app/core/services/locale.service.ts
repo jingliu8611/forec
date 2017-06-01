@@ -13,4 +13,8 @@ export class LocaleService {
     switchLang(lang: string) {
         this.translate.use(lang);
     }
+
+    getCurLang() {
+        return this.translate.currentLang;
+    }
 }

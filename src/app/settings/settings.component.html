@@ -1,26 +1,29 @@
-<!--<ul id="dropdown1" class="dropdown-content">-->
-    <!--<li><a (click)="onChangeLocale(langs.en)">{{ 'HEADER.LANG.EN' | translate}}</a></li>-->
-    <!--<li><a (click)="onChangeLocale(langs.zh)">{{ 'HEADER.LANG.ZH' | translate}}</a></li>-->
-<!--</ul>-->
-<!--<ul id="dropdown2" class="dropdown-content">-->
-    <!--<li><a (click)="onSwitchTheme('theme-1')">{{ 'HEADER.THEME.TH1' | translate}}</a></li>-->
-    <!--<li><a (click)="onSwitchTheme('theme-2')">{{ 'HEADER.THEME.TH2' | translate}}</a></li>-->
-<!--</ul>-->
-<!--<div class="settings-container">-->
-    <!--<li><a class="dropdown-button right" data-activates="dropdown1">{{ 'HEADER.LANG.MENU' | translate}}<i-->
-            <!--class="material-icons right">arrow_drop_down</i></a></li>-->
-    <!--<li><a class="dropdown-button right" data-activates="dropdown2">{{ 'HEADER.THEME.BTN' | translate}}<i-->
-            <!--class="material-icons right">arrow_drop_down</i></a></li>-->
-<!--</div>-->
-
-<a class='dropdown-button btn' data-activates='dropdown1'>Drop Me!</a>
-
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">three</a></li>
-    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+<ul id="dropdown1" class="dropdown-content">
+    <li><a (click)="onChangeLocale(langs.en)">{{ 'HEADER.LANG.EN' | translate}}</a></li>
+    <li><a (click)="onChangeLocale(langs.zh)">{{ 'HEADER.LANG.ZH' | translate}}</a></li>
 </ul>
+<ul id="dropdown2" class="dropdown-content">
+    <li><a (click)="onSwitchTheme('theme-1')">{{ 'HEADER.THEME.TH1' | translate}}</a></li>
+    <li><a (click)="onSwitchTheme('theme-2')">{{ 'HEADER.THEME.TH2' | translate}}</a></li>
+</ul>
+<div class="settings-container">
+    <div class="left">
+        <div class="section">
+            <label for="theme-dropdown">{{ 'HEADER.THEME.BTN' | translate}}</label>
+            <a id="theme-dropdown" class='dropdown-button btn' data-activates='dropdown2'>
+                {{ (themeService.getCurrentTheme() === 'theme-1' ? 'HEADER.THEME.TH1' : 'HEADER.THEME.TH2') |
+                translate}}
+                <i class="material-icons right">arrow_drop_down</i>
+            </a>
+        </div>
+        <div class="section">
+            <label for="theme-dropdown">{{ 'HEADER.LANG.MENU' | translate}}</label>
+            <a id="lang-dropdown" class='dropdown-button btn' data-activates='dropdown1'>{{ (localeService.getCurLang() === 'en' ? 'HEADER.LANG.EN' : 'HEADER.LANG.ZH') |
+                translate}}
+                <i class="material-icons right">arrow_drop_down</i>
+            </a>
+        </div>
+    </div>
+    <div class="right">
+    </div>
+</div>

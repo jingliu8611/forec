@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {LANGUAGES} from '../constants/languages';
 import {ThemeService} from '../core/services/theme.service';
 import {LocaleService} from '../core/services/locale.service';
@@ -10,7 +10,7 @@ declare let $;
     templateUrl: './settings.component.html',
     styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, AfterViewInit {
     langs = LANGUAGES;
 
     constructor(
@@ -20,6 +20,11 @@ export class SettingsComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    ngAfterViewInit() {
+        $('#theme-dropdown').dropdown();
+        $('#lang-dropdown').dropdown();
     }
 
     onChangeLocale(lang: string) {

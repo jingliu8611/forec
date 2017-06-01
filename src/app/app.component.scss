@@ -5,4 +5,10 @@
   width: 100%;
   height: calc(100% - 66px);
   overflow: hidden;
+  padding: 12px;
+}
+#thin-red-line {
+  width: 0;
+  height: 2px;
+  background-color: #F00C01;
 }

@@ -1,28 +1,16 @@
-<ul id="dropdown1" class="dropdown-content">
-    <li><a (click)="onChangeLocale(langs.en)">{{ 'HEADER.LANG.EN' | translate}}</a></li>
-    <li><a (click)="onChangeLocale(langs.zh)">{{ 'HEADER.LANG.ZH' | translate}}</a></li>
-</ul>
-<ul id="dropdown2" class="dropdown-content">
-    <li><a (click)="onSwitchTheme('theme-1')">{{ 'HEADER.THEME.TH1' | translate}}</a></li>
-    <li><a (click)="onSwitchTheme('theme-2')">{{ 'HEADER.THEME.TH2' | translate}}</a></li>
-</ul>
-
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
             <ul class="right">
+                <!--<a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"-->
+                   <!--(click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>-->
                 <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
-                   (click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>
-                <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
-                   (click)="onOpenLoginModal()">{{ 'AUTH.LOGIN' | translate }}</a>
-                <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">{{ 'AUTH.LOGOUT' | translate }}</a>
+                   (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}</a>
+                <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">{{
+                    'AUTH.LOGOUT' | translate }}</a>
                 <a class="waves-effect waves-light setting-icon" [routerLink]="['/settings']">
                     <i class="material-icons">settings</i>
                 </a>
-                <li><a class="dropdown-button right" data-activates="dropdown1">{{ 'HEADER.LANG.MENU' | translate}}<i
-                        class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-button right" data-activates="dropdown2">{{ 'HEADER.THEME.BTN' | translate}}<i
-                        class="material-icons right">arrow_drop_down</i></a></li>
                 <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.displayName}}</li>
             </ul>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -33,10 +21,7 @@
             </ul>
         </div>
     </nav>
-    <div id="thin-red-line" #thinRedLine></div>
 </div>
-
-
 <div id="modal1" class="modal">
     <div class="modal-content">
         <h4>Modal Header</h4>
