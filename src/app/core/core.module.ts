@@ -17,6 +17,7 @@ import {AuthService} from './services/auth.service';
 import {LocaleService} from './services/locale.service';
 import {FirebaseAdapter} from './adapters/auth.firebase.adapter';
 import {ThemeService} from './services/theme.service';
+import {MaterialModule} from '../material/material.module';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import {ThemeService} from './services/theme.service';
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
+        MaterialModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

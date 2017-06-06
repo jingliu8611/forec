@@ -3,7 +3,7 @@
         <div class="nav-wrapper">
             <ul class="right">
                 <!--<a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"-->
-                   <!--(click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>-->
+                <!--(click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>-->
                 <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
                    (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}</a>
                 <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">{{
@@ -31,3 +31,59 @@
         <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
     </div>
 </div>
+<nav md-tab-nav-bar>
+    <div class="nav-body">
+        <div class="body-left">
+            <a md-tab-link
+               [routerLink]="['/home']"
+               routerLinkActive="active">
+                Home
+            </a>
+            <a md-tab-link
+               [routerLink]="['/dashboard']"
+               routerLinkActive="active">
+                Dash
+            </a>
+            <a md-tab-link
+               [routerLink]="['/stocks']"
+               routerLinkActive="active">
+                Stocks
+            </a>
+            <a md-tab-link
+               [routerLink]="['/formulas']"
+               routerLinkActive="active">
+                Formulas
+            </a>
+        </div>
+        <div class="body-right">
+            <div class="register">
+                <button md-raised-button *ngIf="!(authStateA | async)"
+                        (click)="onOpenLoginModal()">
+                    {{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}
+                </button>
+                <button md-raised-button *ngIf="(authStateA | async)"
+                        (click)="onLogout()">
+                    {{'AUTH.LOGOUT' | translate }}
+                </button>
+            </div>
+            <div class="setting">
+                <!--<button md-icon-button [routerLink]="['/settings']"><md-icon>settings</md-icon></button>-->
+                <a md-button [routerLink]="['/settings']"><md-icon>settings</md-icon></a>
+            </div>
+            <!--<button md-raised-button *ngIf="!(authStateA | async)"-->
+                    <!--(click)="onOpenLoginModal()">-->
+                <!--{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}-->
+            <!--</button>-->
+            <!--<button md-raised-button *ngIf="(authStateA | async)"-->
+                    <!--(click)="onLogout()">-->
+                <!--{{'AUTH.LOGOUT' | translate }}-->
+            <!--</button>-->
+            <!--<a class="waves-effect waves-light setting-icon" [routerLink]="['/settings']">-->
+                <!--<i class="material-icons">settings</i>-->
+            <!--</a>-->
+            <!--<a md-fab [routerLink]="['/settings']"><md-icon>settings</md-icon></a>-->
+            <!--<button md-icon-button [routerLink]="['/settings']"><md-icon>settings</md-icon></button>-->
+            <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.displayName}}</li>
+        </div>
+    </div>
+</nav>

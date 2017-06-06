@@ -15,6 +15,49 @@ nav {
     width: 64px;
     text-align: center;
   }
+
+  height: auto;
+  min-height: 64px;
+  a {
+    @include color('secondary-font');
+    opacity: 1;
+  }
+  .nav-body {
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .body-left, .body-right {
+      min-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .body-left > a {
+      height: 64px;
+      line-height: 64px;
+    }
+    .body-right > div {
+      flex: 1 auto;
+      text-align: right;
+      padding: 0 24px;
+      &.register > button {
+        @include color('secondary-font');
+        @include background-color('accent');
+      }
+    }
+    //.body-left {
+    //  display: flex;
+    //}
+    //.body-left {
+    //  flex: 1 auto;
+    //}
+    //.body-right {
+    //  flex: 1 auto;
+    //}
+  }
+
 }
 .dropdown-content {
   @include background-color('accent');
