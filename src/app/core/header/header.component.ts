@@ -20,7 +20,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
+       this.initMaterializeComponents();
+    }
+
+    initMaterializeComponents() {
         $('.modal').modal();
+        $(".button-collapse").sideNav(
+            {
+                closeOnClick: true
+            }
+        );
     }
 
     onOpenLoginModal() {

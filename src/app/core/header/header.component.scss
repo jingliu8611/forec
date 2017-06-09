@@ -12,13 +12,30 @@ nav {
   > div > ul > a.setting-icon {
     background-color: transparent;
     border-radius: 50%;
-    width: 64px;
+    width: 65px;
     text-align: center;
   }
+  .logo-tab {
+    width: 100px;
+    height: 100%;
+    background-image: url('/assets/images/view.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 56px;
+    opacity: 0.84;
+    cursor: pointer;
+  }
 }
-.dropdown-content {
-  @include background-color('accent');
-  li > a:hover {
-    @include color('accent');
+.side-nav {
+  @include background-color('primary');
+  > li > a {
+    @include color('primary-font');
+  }
+  .side-login {
+    @include background-color('accent');
+    cursor: pointer;
+    > a {
+      @include color('secondary-font');
+    }
   }
 }

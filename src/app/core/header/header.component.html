@@ -1,20 +1,21 @@
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-            <ul class="right">
+            <a data-activates="mobile-side-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a [routerLink]="['/home']" class="brand-logo logo-tab center"></a>
+            <ul class="right hide-on-med-and-down">
                 <!--<a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"-->
-                   <!--(click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>-->
+                <!--(click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>-->
                 <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
                    (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}</a>
                 <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">{{
                     'AUTH.LOGOUT' | translate }}</a>
                 <a class="waves-effect waves-light setting-icon" [routerLink]="['/settings']">
-                    <i class="material-icons">settings</i>
+                    <i class="material-icons">tune</i>
                 </a>
                 <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.displayName}}</li>
             </ul>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li routerLinkActive="active"><a [routerLink]="['/home']">{{ 'HEADER.HOME' | translate}}</a></li>
+            <ul class="left hide-on-med-and-down">
                 <li routerLinkActive="active"><a [routerLink]="['/dashboard']">{{ 'HEADER.DASH' | translate}}</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['/stocks']">{{ 'HEADER.STOCK' | translate}}</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['/formulas']">{{ 'HEADER.FORM' | translate}}</a></li>
@@ -31,3 +32,13 @@
         <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
     </div>
 </div>
+<ul id="mobile-side-menu" class="side-nav">
+    <li><a [routerLink]="['/dashboard']">{{ 'HEADER.DASH' | translate}}</a></li>
+    <li><a [routerLink]="['/stocks']">{{ 'HEADER.STOCK' | translate}}</a></li>
+    <li><a [routerLink]="['/formulas']">{{ 'HEADER.FORM' | translate}}</a></li>
+    <li><a [routerLink]="['/settings']">{{ 'HEADER.PREF' | translate}}</a></li>
+    <li class="side-login">
+        <a *ngIf="!(authStateA | async)" (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}</a>
+        <a *ngIf="(authStateA | async)" (click)="onLogout()">{{'AUTH.LOGOUT' | translate }}</a>
+    </li>
+</ul>
