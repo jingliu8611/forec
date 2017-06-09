@@ -16,7 +16,6 @@
                 <li *ngIf="(authStateA | async)">Hello {{ (authStateA | async)?.displayName}}</li>
             </ul>
             <ul class="left hide-on-med-and-down">
-                <!--<li routerLinkActive="active"><a [routerLink]="['/home']">{{ 'HEADER.HOME' | translate}}</a></li>-->
                 <li routerLinkActive="active"><a [routerLink]="['/dashboard']">{{ 'HEADER.DASH' | translate}}</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['/stocks']">{{ 'HEADER.STOCK' | translate}}</a></li>
                 <li routerLinkActive="active"><a [routerLink]="['/formulas']">{{ 'HEADER.FORM' | translate}}</a></li>
@@ -38,4 +37,8 @@
     <li><a [routerLink]="['/stocks']">{{ 'HEADER.STOCK' | translate}}</a></li>
     <li><a [routerLink]="['/formulas']">{{ 'HEADER.FORM' | translate}}</a></li>
     <li><a [routerLink]="['/settings']">{{ 'HEADER.PREF' | translate}}</a></li>
+    <li class="side-login">
+        <a *ngIf="!(authStateA | async)" (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}</a>
+        <a *ngIf="(authStateA | async)" (click)="onLogout()">{{'AUTH.LOGOUT' | translate }}</a>
+    </li>
 </ul>

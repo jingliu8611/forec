@@ -31,4 +31,11 @@ nav {
   > li > a {
     @include color('primary-font');
   }
+  .side-login {
+    @include background-color('accent');
+    cursor: pointer;
+    > a {
+      @include color('secondary-font');
+    }
+  }
 }
