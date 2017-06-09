@@ -26,3 +26,9 @@ nav {
     cursor: pointer;
   }
 }
+.side-nav {
+  @include background-color('primary');
+  > li > a {
+    @include color('primary-font');
+  }
+}
