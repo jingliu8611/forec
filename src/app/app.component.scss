@@ -1,14 +1,19 @@
 @import './../theme';
-.content {
+.content-wrapper {
   @include color('primary-font');
   @include background-color('primary');
   width: 100%;
-  height: calc(100% - 66px);
   overflow: hidden;
   padding: 12px;
+  flex-grow: 1;
 }
 #thin-red-line {
   width: 0;
   height: 2px;
   background-color: #F00C01;
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
