@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     initMaterializeComponents() {
-        $('.modal').modal();
+        $('#login-modal').modal();
         $(".button-collapse").sideNav(
             {
                 closeOnClick: true
@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     onOpenLoginModal() {
-        $('#modal1').modal('open');
+        $('#login-modal').modal('open');
     }
 
     onLogout() {

@@ -39,3 +39,30 @@ nav {
     }
   }
 }
+#login-modal {
+  @include color('primary-font');
+  @include background-color('primary');
+  height: 100%;
+  min-width: 400px;
+  .modal-header {
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+    padding: 0 24px;
+  }
+  .modal-content {
+    height: calc(100% - 64px - 56px);
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: scroll;
+  }
+  .modal-footer {
+    @include background-color('primary');
+    button {
+      @include color('secondary-font');
+      @include background-color('accent');
+    }
+  }
+}
