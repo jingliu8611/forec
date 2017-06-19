@@ -4,8 +4,6 @@
             <a data-activates="mobile-side-menu" class="button-collapse"><i class="material-icons">menu</i></a>
             <a [routerLink]="['/home']" class="brand-logo logo-tab center"></a>
             <ul class="right hide-on-med-and-down">
-                <!--<a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"-->
-                <!--(click)="onRegister('222@gmail.com', 'admin@123')">{{ 'AUTH.REG' | translate }}</a>-->
                 <a *ngIf="!(authStateA | async)" class="waves-effect waves-light btn"
                    (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}</a>
                 <a *ngIf="(authStateA | async)" class="waves-effect waves-light btn" (click)="onLogout()">{{
@@ -23,13 +21,25 @@
         </div>
     </nav>
 </div>
-<div id="modal1" class="modal">
+<div id="login-modal" class="modal">
+    <div class="modal-header">
+        <div [@loginBtn]="displayContent"
+             (click)="displayContent = 'login'">{{ 'AUTH.LOGIN' | translate }}
+        </div>
+        <div [@registerBtn]="displayContent"
+             (click)="displayContent = 'register'">{{ 'AUTH.REG' | translate }}
+        </div>
+    </div>
     <div class="modal-content">
-        <h4>Modal Header</h4>
-        <fc-login></fc-login>
+        <fc-login
+                [@loginDisplay]="displayContent"
+        ></fc-login>
+        <fc-register
+                [@registerDisplay]="displayContent"
+        ></fc-register>
     </div>
     <div class="modal-footer">
-        <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
+        <button class="modal-action modal-close btn-flat">{{ 'BTN.CLO' | translate }}</button>
     </div>
 </div>
 <ul id="mobile-side-menu" class="side-nav">
@@ -38,7 +48,8 @@
     <li><a [routerLink]="['/formulas']">{{ 'HEADER.FORM' | translate}}</a></li>
     <li><a [routerLink]="['/settings']">{{ 'HEADER.PREF' | translate}}</a></li>
     <li class="side-login">
-        <a *ngIf="!(authStateA | async)" (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' | translate }}</a>
+        <a *ngIf="!(authStateA | async)" (click)="onOpenLoginModal()">{{ 'AUTH.REG' | translate }} / {{ 'AUTH.LOGIN' |
+            translate }}</a>
         <a *ngIf="(authStateA | async)" (click)="onLogout()">{{'AUTH.LOGOUT' | translate }}</a>
     </li>
 </ul>

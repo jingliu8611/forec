@@ -39,8 +39,8 @@ export class AuthService {
         return this.adapter.logout();
     }
 
-    register(email, password) {
-        return this.adapter.register(email, password);
+    register(email, password, displayName) {
+        return this.adapter.register(email, password, displayName);
     }
 
     thirdPartyLogin(thirPartyName = THIRD_PARTIES[1]) {
@@ -52,6 +52,6 @@ export class AuthService {
     }
 
     private static closeLoginModal() {
-        $('#modal1').modal('close');
+        $('#login-modal').modal('close');
     }
 }

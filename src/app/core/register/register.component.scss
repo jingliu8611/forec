@@ -1,0 +1,48 @@
+@import './../../../theme';
+
+.register-container {
+  @include color('primary-font');
+  @include background-color('primary');
+  min-width: 350px;
+  .register-form {
+    width: 100%;
+    input {
+      &:focus {
+        @include border-color('primary-font');
+      }
+    }
+    a {
+      @include color('secondary-font');
+      @include background-color('secondary');
+      width: 100%;
+      height: 64px;
+      line-height: 64px;
+      margin-bottom: 6px;
+    }
+  }
+}
+:host {
+  width: 100%;
+}
+
+@media only screen and (max-height: 800px) {
+  .register-container {
+    .register-form {
+      a {
+        height: 52px;
+        line-height: 52px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 710px) {
+  .register-container {
+    .register-form {
+      a {
+        height: 46px;
+        line-height: 46px;
+      }
+    }
+  }
+}
