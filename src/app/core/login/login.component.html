@@ -4,14 +4,14 @@
         <a class="waves-effect waves-light btn" (click)="onThirdPartyLogin(thirdParties[1])">Facebook</a>
         <a class="waves-effect waves-light btn" (click)="onThirdPartyLogin(thirdParties[2])">Twitter</a>
     </div>
-    <div class="signup-or-separator">
-        <span class="signup-or-separator--text">or</span>
+    <div class="login-or-separator">
+        <span class="separator-text">{{ 'AUTH.OR' | translate }}</span>
         <hr>
     </div>
     <form class="login-form">
-        <input class="item-layout" #signinId name="email" placeholder="Email Address" type="email">
-        <input class="item-layout" #signinPassword name="password" placeholder="Password" type="password">
-        <a class="item-layout waves-effect waves-light btn" type="submit"
+        <input #signinId name="email" placeholder="{{ 'AUTH.EMAIL' | translate }}" type="email">
+        <input #signinPassword name="password" placeholder="{{ 'AUTH.PASS' | translate }}" type="password">
+        <a class="waves-effect waves-light btn" type="submit"
            (click)="onLogin(signinId.value, signinPassword.value)">{{ 'AUTH.LOGIN' | translate }}</a>
     </form>
 </div>

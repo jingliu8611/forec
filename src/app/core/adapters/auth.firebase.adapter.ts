@@ -47,11 +47,14 @@ export class FirebaseAdapter {
         );
     }
 
-    register(email, password) {
+    register(email, password, displayName) {
         return Observable.fromPromise(
             new Promise((resolve, reject) => {
                 this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
-                    authState => resolve(authState)
+                    authState => {
+                        firebase.auth().currentUser.updateProfile({displayName: displayName, photoURL: null});
+                        resolve(authState);
+                    }
                 ).catch(
                     err => reject(err)
                 );

@@ -3,7 +3,7 @@
 .login-container {
   @include color('primary-font');
   @include background-color('primary');
-  width: 380px;
+  min-width: 350px;
   .third-party, .login-form {
     a {
       @include color('secondary-font');
@@ -14,12 +14,12 @@
       margin-bottom: 6px;
     }
   }
-  .signup-or-separator {
+  .login-or-separator {
     background: none;
     height: 34px;
     position: relative;
     text-align: center;
-    .signup-or-separator--text {
+    .separator-text {
       display: inline-block;
       padding: 8px;
       @include background-color('primary');
@@ -34,10 +34,39 @@
   }
   .login-form {
     width: 100%;
-    height: 240px;
     input {
       &:focus {
         @include border-color('primary-font');
+      }
+    }
+  }
+}
+:host {
+  width: 100%;
+}
+
+@media only screen and (max-height: 800px) {
+  .login-container {
+    .third-party, .login-form {
+      a {
+        height: 52px;
+        line-height: 52px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 710px) {
+  .login-container {
+    .third-party, .login-form {
+      a {
+        height: 46px;
+        line-height: 46px;
+      }
+    }
+    .login-form {
+      input {
+        margin-bottom: 5px;
       }
     }
   }

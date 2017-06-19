@@ -1,6 +1,7 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {select} from '@angular-redux/store/lib/src/decorators/select';
+import {trigger, state, style, transition, animate} from '@angular/animations';
 
 declare let $;
 
@@ -8,10 +9,53 @@ declare let $;
     selector: 'fc-header',
     templateUrl: 'header.component.html',
     styleUrls: ['header.component.scss'],
+    animations: [
+        trigger('loginDisplay', [
+            state('login', style({
+                transform: 'translateX(0)'
+            })),
+            state('register', style({
+                transform: 'translateX(calc(-100% - 24px))'
+            })),
+            transition('login <=> register', animate(300)),
+        ]),
+        trigger('registerDisplay', [
+            state('login', style({
+                transform: 'translateX(24px)'
+            })),
+            state('register', style({
+                transform: 'translateX(-100%)'
+            })),
+            transition('login <=> register', animate(300)),
+        ]),
+        trigger('loginBtn', [
+            state('login', style({
+                transform: 'translateX(0)',
+                background: 'rgba(0,0,0,0.12)'
+            })),
+            state('register', style({
+                transform: 'translateX(100%)',
+                background: 'transparent'
+            })),
+            transition('login <=> register', animate(300)),
+        ]),
+        trigger('registerBtn', [
+            state('login', style({
+                transform: 'translateX(0)',
+                background: 'transparent'
+            })),
+            state('register', style({
+                transform: 'translateX(-100%)',
+                background: 'rgba(0,0,0,0.12)'
+            })),
+            transition('login <=> register', animate(300)),
+        ])
+    ]
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
     // @select((s: IAppState) => s.login.authState) authStateA;
     @select(['login', 'authState']) authStateA;
+    displayContent = 'login';
 
     constructor(private authService: AuthService) {
     }
@@ -43,17 +87,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
             },
             err => {
                 console.log('header comp - logout fail ', err);
-            }
-        );
-    }
-
-    onRegister(email, password) {
-        this.authService.register(email, password).subscribe(
-            authState => {
-                console.log('header comp - register success ', authState)
-            },
-            err => {
-                console.log('header comp - register fail ', err);
             }
         );
     }

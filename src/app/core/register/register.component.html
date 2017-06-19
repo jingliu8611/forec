@@ -1,0 +1,10 @@
+<div class="register-container">
+    <form class="register-form">
+        <input #registerName name="name" placeholder="{{ 'AUTH.NAME' | translate }}" type="text">
+        <input #registerEmail name="email" placeholder="{{ 'AUTH.EMAIL' | translate }}" type="email">
+        <input #registerPassword name="password" placeholder="{{ 'AUTH.PASS' | translate }}" type="password">
+        <a class="waves-effect waves-light btn" type="submit"
+           (click)="onRegister(registerEmail.value, registerPassword.value, registerName.value)"
+        >{{ 'AUTH.REG' | translate }}</a>
+    </form>
+</div>

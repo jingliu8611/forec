@@ -1,4 +1,7 @@
 {
+  "BTN": {
+    "CLO": "CLOSE"
+  },
   "HEADER": {
     "HOME": "Home",
     "DASH": "Dashboard",
@@ -19,6 +22,10 @@
   "AUTH": {
     "LOGIN": "Login",
     "LOGOUT": "Logout",
-    "REG": "Register"
+    "REG": "Register",
+    "EMAIL": "Email Address",
+    "NAME": "Display Name",
+    "PASS": "Password",
+    "OR": "or"
   }
 }
