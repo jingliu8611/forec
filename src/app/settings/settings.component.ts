@@ -2,13 +2,19 @@ import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {LANGUAGES} from '../constants/languages';
 import {ThemeService} from '../core/services/theme.service';
 import {LocaleService} from '../core/services/locale.service';
+import {routerAnimations} from '../constants/animations';
 
 declare let $;
 
 @Component({
     selector: 'fc-settings',
     templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.scss']
+    styleUrls: ['./settings.component.scss'],
+    host: {
+        '[@routerAnimations]': 'true',
+        '[style.position]': "'absolute'"
+    },
+    animations: [routerAnimations]
 })
 export class SettingsComponent implements OnInit, AfterViewInit {
     langs = LANGUAGES;

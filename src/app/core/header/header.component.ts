@@ -15,7 +15,7 @@ declare let $;
                 transform: 'translateX(0)'
             })),
             state('register', style({
-                transform: 'translateX(calc(-100% - 24px))'
+                transform: 'translateX(calc(100% + 24px))'
             })),
             transition('login <=> register', animate(300)),
         ]),
@@ -31,10 +31,12 @@ declare let $;
         trigger('loginBtn', [
             state('login', style({
                 transform: 'translateX(0)',
+                opacity: 1,
                 background: 'rgba(0,0,0,0.12)'
             })),
             state('register', style({
                 transform: 'translateX(100%)',
+                opacity: 0.64,
                 background: 'transparent'
             })),
             transition('login <=> register', animate(300)),
@@ -42,10 +44,12 @@ declare let $;
         trigger('registerBtn', [
             state('login', style({
                 transform: 'translateX(0)',
+                opacity: 0.64,
                 background: 'transparent'
             })),
             state('register', style({
                 transform: 'translateX(-100%)',
+                opacity: 1,
                 background: 'rgba(0,0,0,0.12)'
             })),
             transition('login <=> register', animate(300)),
