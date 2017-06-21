@@ -25,7 +25,13 @@ nav {
     opacity: 0.84;
     cursor: pointer;
   }
+  .nav-wrapper {
+    .button-collapse {
+      @include color('primary');
+    }
+  }
 }
+
 .side-nav {
   @include background-color('primary');
   > li > a {
@@ -39,6 +45,7 @@ nav {
     }
   }
 }
+
 #login-modal {
   @include color('primary-font');
   @include background-color('primary');
