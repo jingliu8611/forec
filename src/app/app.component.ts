@@ -18,4 +18,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
     }
+
+    // commit 2, file 2
 }
